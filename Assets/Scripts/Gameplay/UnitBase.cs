@@ -146,7 +146,7 @@ public class UnitBase : MonoBehaviour
         }
         else
         {
-            //Unity target and block cannot move
+            //target and block cannot move
             speed = 0f;
         }
     }

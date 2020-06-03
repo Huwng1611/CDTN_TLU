@@ -23,7 +23,7 @@ public class BoxController : UnitBase
     [SerializeField] Sprite[] boxSprites;
     [SerializeField] SpriteRenderer mainSprite;
 
-    private bool isOnPoint = false;
+    public bool IsOnPoint { get; private set; } = false;
 
     protected override void Awake()
     {
@@ -76,12 +76,12 @@ public class BoxController : UnitBase
         this.unitState.IsChangeState(EnumUnitState.MOVE);
     }
 
-    private void OnTileChange()
+    public void OnTileChange()
     {
         if (onBoxTileHandler != null)
         {
-            this.isOnPoint = onBoxTileHandler(this, this.tile);
-            if (isOnPoint)
+            this.IsOnPoint = onBoxTileHandler(this, this.tile);
+            if (IsOnPoint)
             {
                 this.mainSprite.sprite = this.boxSprites[1];
             }

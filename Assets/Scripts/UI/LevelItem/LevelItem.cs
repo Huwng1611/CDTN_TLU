@@ -15,6 +15,10 @@ public class LevelItem : MonoBehaviour
 
     private void Start()
     {
+        //fortesting
+        this.itemLevelData.levelStatus = EnumLevelStatus.UNLOCK;
+        this.SaveLevelData(this.itemLevelData.levelStatus);
+
         this.GetComponent<Button>().onClick.AddListener(() => OnClickThisLevel());
         var level_id = this.transform.GetSiblingIndex() + 1;
         this.levelText.text = level_id.ToString();

@@ -1,33 +1,33 @@
 <level name="level1">
   <blocks>
+    <unit x="3" y="4"/>
     <unit x="4" y="4"/>
     <unit x="5" y="4"/>
     <unit x="6" y="4"/>
     <unit x="7" y="4"/>
-    <unit x="8" y="4"/>
-    <unit x="4" y="5"/>
-    <unit x="8" y="5"/>
-    <unit x="4" y="6"/>
-    <unit x="8" y="6"/>
-    <unit x="5" y="8"/>
-    <unit x="4" y="7"/>
-	<unit x="4" y="8"/>
+    <unit x="3" y="5"/>
+    <unit x="7" y="5"/>
+    <unit x="3" y="6"/>
+    <unit x="7" y="6"/>
+    <unit x="4" y="8"/>
+    <unit x="3" y="7"/>
+    <unit x="3" y="8"/>
+    <unit x="6" y="8"/>
     <unit x="7" y="8"/>
-    <unit x="8" y="8"/>
-    <unit x="8" y="7"/>
+    <unit x="7" y="7"/>
+    <unit x="4" y="9"/>
     <unit x="5" y="9"/>
     <unit x="6" y="9"/>
-    <unit x="7" y="9"/>
   </blocks>
   <players>
-    <unit x="7" y="7"/>
+    <unit x="6" y="7"/>
   </players>
   <boxes>
-    <unit x="6" y="6"/>
-    <unit x="6" y="7"/>
+    <unit x="5" y="6"/>
+    <unit x="5" y="7"/>
   </boxes>
   <targets>
-    <unit x="5" y="6"/>
-    <unit x="6" y="8"/>
+    <unit x="4" y="6"/>
+    <unit x="5" y="8"/>
   </targets>
 </level>

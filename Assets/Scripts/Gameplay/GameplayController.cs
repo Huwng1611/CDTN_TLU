@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -123,6 +122,7 @@ public class GameplayController : MonoBehaviour
             var box = this.CreateUnit(this.boxPrefab, tileX, tileY).GetComponent<BoxController>();
             box.name = "Box(" + tileX + "," + tileY + ")";
             box.onBoxTileHandler += OnBoxTileHandler;
+            box.OnTileChange();
         }
     }
 
@@ -240,14 +240,10 @@ public class GameplayController : MonoBehaviour
                 if (direction.x < 0)
                 {
                     enumDirection = EnumDirection.LEFT;
-                    //this.playerController.playerMoveStack.Push(enumDirection);
-                    //Debug.Log("<color=cyan>Stack peek: " + this.playerController.playerMoveStack.Peek() + " </color>");
                 }
                 else
                 {
                     enumDirection = EnumDirection.RIGHT;
-                    //this.playerController.playerMoveStack.Push(enumDirection);
-                    //Debug.Log("<color=cyan>Stack peek: " + this.playerController.playerMoveStack.Peek() + " </color>");
                 }
             }
             else
@@ -255,14 +251,10 @@ public class GameplayController : MonoBehaviour
                 if (direction.y < 0)
                 {
                     enumDirection = EnumDirection.DOWN;
-                    //this.playerController.playerMoveStack.Push(enumDirection);
-                    //Debug.Log("<color=cyan>Stack peek: " + this.playerController.playerMoveStack.Peek() + " </color>");
                 }
                 else
                 {
                     enumDirection = EnumDirection.UP;
-                    //this.playerController.playerMoveStack.Push(enumDirection);
-                    //Debug.Log("<color=cyan>Stack peek: " + this.playerController.playerMoveStack.Peek() + " </color>");
                 }
             }
         }
@@ -271,13 +263,38 @@ public class GameplayController : MonoBehaviour
 
     private void CheckPassLevel()
     {
+        var number_target = this.levelData.targets.Length;
+        //var list_box_on_target = dynamicUnitList.FindAll(unit => unit.UnitType == EnumUnitType.BOX
+        //    && unit.gameObject.GetComponent<BoxController>().IsOnPoint == true);
+
+        //if (number_target != list_box_on_target.Count)
+        //{
+        //    return;
+        //}
+
+        int number_boxes = 0;
         for (int i = 0; i < dynamicUnitList.Count; i++)
         {
             if (dynamicUnitList[i].UnitType == EnumUnitType.BOX)
             {
-                if (levelData.IsTarget(dynamicUnitList[i].Tile.x, dynamicUnitList[i].Tile.y) == false)
+                //if (levelData.IsTarget(dynamicUnitList[i].Tile.x, dynamicUnitList[i].Tile.y) == false)
+                //{
+                //    return;
+                //}
+                if (levelData.IsTarget(dynamicUnitList[i].Tile.x, dynamicUnitList[i].Tile.y) == true)
                 {
-                    return;
+                    number_boxes++;
+                }
+                if (number_boxes != number_target)
+                {
+                    if (i < dynamicUnitList.Count - 1)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
         }

@@ -123,6 +123,10 @@ public class SaveGame
     /// </summary>
     public void ResetAllData()
     {
+        if (File.Exists(fileData))
+        {
+            File.Delete(fileData);
+        }
         this.savedGameData = new SavedGameData();
     }
 }

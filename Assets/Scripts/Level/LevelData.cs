@@ -24,6 +24,9 @@ public class LevelData
 
     public LevelData(int level_ID)
     {
+        //fortesting
+        this.enumLevelStatus = EnumLevelStatus.UNLOCK;
+
         this.levelID = level_ID;
         var data = Resources.Load<TextAsset>("LevelSystem/level" + level_ID);
         XmlDocument xmlDocument = new XmlDocument();
@@ -53,16 +56,16 @@ public class LevelData
                 unit_data.y = float.Parse(y);
                 unit_data.unitType = enumUnitType;
                 unit_datas[i] = unit_data;
-                this.unitDataDictionary[GetPositionFlag(unit_data.x, unit_data.y)] = unit_data;
+                this.unitDataDictionary[GetPositionFlag(unit_data.x, unit_data.y, unit_data.unitType)] = unit_data;
             }
         }
         return unit_datas;
     }
 
-    private UnitData GetUnitData(float x, float y)
+    private UnitData GetUnitData(float x, float y, EnumUnitType enumUnitType)
     {
-        string flag = GetPositionFlag(x, y);
-        if(this.unitDataDictionary.ContainsKey(flag))
+        string flag = GetPositionFlag(x, y, enumUnitType);
+        if (this.unitDataDictionary.ContainsKey(flag))
         {
             return this.unitDataDictionary[flag];
         }
@@ -72,9 +75,9 @@ public class LevelData
         }
     }
 
-    public string GetPositionFlag(float x, float y)
+    public string GetPositionFlag(float x, float y, EnumUnitType enumUnitType)
     {
-        return string.Format("{0}_{1}", x, y);
+        return string.Format("{0}_{1}_{2}", x, y, enumUnitType);
     }
 
     public bool IsBlock(float x, float y)
@@ -94,7 +97,7 @@ public class LevelData
 
     public bool CheckType(float x, float y, EnumUnitType enumUnitType)
     {
-        var unit_data = this.GetUnitData(x, y);
+        var unit_data = this.GetUnitData(x, y, enumUnitType);
         if (unit_data == null || unit_data.unitType != enumUnitType)
         {
             return false;
@@ -125,7 +128,7 @@ public class RecordUnitData
     //    this.boxID = box_ID;
     //}
 
-    public RecordUnitData(Vector2 player_tile = default, Vector2 box_tile = default, EnumDirection dir = EnumDirection.NONE, int box_ID = -1)
+    public RecordUnitData(Vector2 player_tile, Vector2 box_tile, EnumDirection dir, int box_ID)
     {
         this.playerTile = player_tile;
         this.boxTile = box_tile;

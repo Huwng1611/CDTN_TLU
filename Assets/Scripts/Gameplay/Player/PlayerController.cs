@@ -102,12 +102,13 @@ public class PlayerController : UnitBase
             this.toTilePos = toTilePos.Value;
             this.targetPos = this.toTilePos * ConfigManager.Instance.mapConfig.TileSize;
             this.unitState.IsChangeState(EnumUnitState.MOVE);
-            GameData.Instance.recordStack.Push(new RecordUnitData(this.tile, toTilePos.Value, this.EnumDirection, GameplayController.Instance.dynamicUnitList.IndexOf(box)));
+            //GameData.Instance.recordStack.Push(new RecordUnitData(this.tile, toTilePos.Value, this.EnumDirection, GameplayController.Instance.dynamicUnitList.IndexOf(box)));
         }
         else
         {
             this.unitState.IsChangeState(EnumUnitState.IDLE);
-            GameData.Instance.recordStack.Push(new RecordUnitData(default, default, default, default));
+            //GameData.Instance.recordStack.Push(new RecordUnitData(default, default, default, default));
         }
+        GameData.Instance.recordStack.Push(new RecordUnitData(this.tile, toTilePos.Value, this.EnumDirection, GameplayController.Instance.dynamicUnitList.IndexOf(box)));
     }
 }
