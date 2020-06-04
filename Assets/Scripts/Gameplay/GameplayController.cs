@@ -121,7 +121,7 @@ public class GameplayController : MonoBehaviour
             var tileY = levelData.boxes[i].y;
             var box = this.CreateUnit(this.boxPrefab, tileX, tileY).GetComponent<BoxController>();
             box.name = "Box(" + tileX + "," + tileY + ")";
-            box.onBoxTileHandler += OnBoxTileHandler;
+            box.onBoxTileHandler += IsBoxOnTarget;
             box.OnTileChange();
         }
     }
@@ -173,7 +173,7 @@ public class GameplayController : MonoBehaviour
     }
     #endregion
 
-    private bool OnBoxTileHandler(BoxController box, Vector3 tile)
+    private bool IsBoxOnTarget(BoxController box, Vector3 tile)
     {
         if (this.levelData.IsTarget(tile.x, tile.y))
         {
@@ -264,23 +264,11 @@ public class GameplayController : MonoBehaviour
     private void CheckPassLevel()
     {
         var number_target = this.levelData.targets.Length;
-        //var list_box_on_target = dynamicUnitList.FindAll(unit => unit.UnitType == EnumUnitType.BOX
-        //    && unit.gameObject.GetComponent<BoxController>().IsOnPoint == true);
-
-        //if (number_target != list_box_on_target.Count)
-        //{
-        //    return;
-        //}
-
         int number_boxes = 0;
         for (int i = 0; i < dynamicUnitList.Count; i++)
         {
             if (dynamicUnitList[i].UnitType == EnumUnitType.BOX)
             {
-                //if (levelData.IsTarget(dynamicUnitList[i].Tile.x, dynamicUnitList[i].Tile.y) == false)
-                //{
-                //    return;
-                //}
                 if (levelData.IsTarget(dynamicUnitList[i].Tile.x, dynamicUnitList[i].Tile.y) == true)
                 {
                     number_boxes++;
@@ -299,7 +287,6 @@ public class GameplayController : MonoBehaviour
             }
         }
 
-        //int moves_count = this.playerController.playerMoveStack.Count;
         int moves_count = GameData.Instance.recordStack.Count;
         Debug.Log("moves_count == " + moves_count);
         int best_moves_count = GameData.Instance.saveGame.GetCompletedLevelInfor(this.levelData.levelID);
