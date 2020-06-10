@@ -30,7 +30,7 @@ public class UnitState<T>
 
     public UnitState()
     {
-  
+
     }
 
     private void DefaultEnterState(T from_state)
@@ -59,7 +59,7 @@ public class UnitState<T>
         {
             onEnter = this.DefaultEnterState;
         }
-        if( onExit == null)
+        if (onExit == null)
         {
             onExit = this.DefaultExitState;
         }

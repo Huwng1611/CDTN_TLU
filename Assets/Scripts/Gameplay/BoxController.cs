@@ -18,7 +18,7 @@ public class BoxController : UnitBase
     /// <summary>
     /// Contain sprite default & goal sprite
     /// element 0: default
-    /// element 1: sprite on point
+    /// element 1: sprite on target
     /// </summary>
     [SerializeField] Sprite[] boxSprites;
     [SerializeField] SpriteRenderer mainSprite;
