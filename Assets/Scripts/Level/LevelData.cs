@@ -33,7 +33,7 @@ public class LevelData
         xmlDocument.LoadXml(data.text);
         this.xmlDocument = xmlDocument;
 
-        blocks = GetUnitDatas("blocks", EnumUnitType.BLOCK);
+        blocks = GetUnitDatas("blocks", EnumUnitType.WALL);
         players = GetUnitDatas("players", EnumUnitType.PLAYER);
         targets = GetUnitDatas("targets", EnumUnitType.TARGET);
         boxes = GetUnitDatas("boxes", EnumUnitType.BOX);
@@ -82,7 +82,7 @@ public class LevelData
 
     public bool IsBlock(float x, float y)
     {
-        return this.CheckType(x, y, EnumUnitType.BLOCK);
+        return this.CheckType(x, y, EnumUnitType.WALL);
     }
 
     public bool IsTarget(float x, float y)

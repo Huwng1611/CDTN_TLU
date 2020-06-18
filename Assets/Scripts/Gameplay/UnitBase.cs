@@ -166,7 +166,7 @@ public class UnitBase : MonoBehaviour
 public enum EnumUnitType
 {
     PLAYER,
-    BLOCK,
+    WALL,
     BOX,
     TARGET
 }
