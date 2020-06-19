@@ -15,7 +15,7 @@ public class LevelItem : MonoBehaviour
 
     private void Start()
     {
-        //fortesting
+        //for testing
         this.itemLevelData.levelStatus = EnumLevelStatus.UNLOCK;
         this.SaveLevelData(this.itemLevelData.levelStatus);
 
