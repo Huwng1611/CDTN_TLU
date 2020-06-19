@@ -14,7 +14,7 @@ public class LevelData
 {
     public int levelID;
     public EnumLevelStatus enumLevelStatus;
-    public UnitData[] blocks;
+    public UnitData[] walls;
     public UnitData[] players;
     public UnitData[] targets;
     public UnitData[] boxes;
@@ -33,7 +33,7 @@ public class LevelData
         xmlDocument.LoadXml(data.text);
         this.xmlDocument = xmlDocument;
 
-        blocks = GetUnitDatas("blocks", EnumUnitType.WALL);
+        walls = GetUnitDatas("walls", EnumUnitType.WALL);
         players = GetUnitDatas("players", EnumUnitType.PLAYER);
         targets = GetUnitDatas("targets", EnumUnitType.TARGET);
         boxes = GetUnitDatas("boxes", EnumUnitType.BOX);
@@ -80,7 +80,7 @@ public class LevelData
         return string.Format("{0}_{1}_{2}", x, y, enumUnitType);
     }
 
-    public bool IsBlock(float x, float y)
+    public bool IsWall(float x, float y)
     {
         return this.CheckType(x, y, EnumUnitType.WALL);
     }

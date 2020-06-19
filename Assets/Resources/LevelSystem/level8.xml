@@ -1,5 +1,5 @@
 <level name="level8">
-  <blocks>
+  <walls>
     <unit x="2" y="4"/>
     <unit x="2" y="5"/>
     <unit x="2" y="6"/>
@@ -24,7 +24,7 @@
     <unit x="9" y="6"/>
     <unit x="9" y="7"/>
     <unit x="9" y="8"/>
-  </blocks>
+  </walls>
   <players>
     <unit x="6" y="6"/>
   </players>

@@ -23,7 +23,7 @@ public class GameplayController : MonoBehaviour
     [Header("Boxes")]
     public GameObject boxPrefab;
 
-    [Header("Blocks")]
+    [Header("walls")]
     public GameObject blockPrefab;
 
     [Header("Targets")]
@@ -99,7 +99,7 @@ public class GameplayController : MonoBehaviour
         this.CreatePlayerUnit();
         this.CreateBoxUnits();
         this.CreateTargets();
-        this.CreateBlocks();
+        this.Createwalls();
     }
 
     private void CreatePlayerUnit()
@@ -144,12 +144,12 @@ public class GameplayController : MonoBehaviour
         }
     }
 
-    private void CreateBlocks()
+    private void Createwalls()
     {
-        for (int i = 0; i < levelData.blocks.Length; i++)
+        for (int i = 0; i < levelData.walls.Length; i++)
         {
-            var tileX = levelData.blocks[i].x;
-            var tileY = levelData.blocks[i].y;
+            var tileX = levelData.walls[i].x;
+            var tileY = levelData.walls[i].y;
             var block = this.CreateUnit(this.blockPrefab, tileX, tileY);
             block.name = "Block(" + tileX + "," + tileY + ")";
         }
@@ -187,7 +187,7 @@ public class GameplayController : MonoBehaviour
     {
         var x = endTile.x;
         var y = endTile.y;
-        if (this.levelData.IsBlock(x, y))
+        if (this.levelData.IsWall(x, y))
         {
             return false;
         }
@@ -215,7 +215,7 @@ public class GameplayController : MonoBehaviour
                     break;
             }
 
-            if (this.levelData.IsBlock(x, y) || this.GetBox(x, y) != null)
+            if (this.levelData.IsWall(x, y) || this.GetBox(x, y) != null)
             {
                 return false;
             }
