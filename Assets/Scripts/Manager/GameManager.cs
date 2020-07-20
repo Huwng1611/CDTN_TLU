@@ -6,11 +6,17 @@ public class GameManager : Singleton<GameManager>
 {
     public Transform gameplayTransform;
     public GameObject gamePlayPrefab;
-    //public GameObject mainMenuPrefab;
+    public AudioSource audioFinishLevel;
+    public AudioSource audioBGMusic;
 
     private void Awake()
     {
         this.Init();
+    }
+
+    private void Start()
+    {
+        audioBGMusic.loop = true;
     }
 
     private void Init()
@@ -28,12 +34,14 @@ public class GameManager : Singleton<GameManager>
         //this.DisplayGame(gamePlayPrefab);
         UIManager.Instance.panelSelectLevel.SetActive(false);
         UIManager.Instance.panelEndLevel.SetActive(false);
+        audioBGMusic.PlayDelayed(0.1f);
     }
 
     public void BackToMainMenu()
     {
         UIManager.Instance.mainMenu.SetActive(true);
         this.ClearMap();
+        audioBGMusic.Stop();
     }
 
     public void DisplayGame(GameObject prefabObject, bool isLoading = true)
