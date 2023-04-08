@@ -293,8 +293,8 @@ public class GameplayController : MonoBehaviour
         UIManager.Instance.panelEndLevel.SetActive(true);
         UIManager.Instance.movesCount.text = moves_count.ToString();
         UIManager.Instance.levelText.text = this.levelData.levelID.ToString();
-        GameManager.Instance.audioBGMusic.Stop();
-        GameManager.Instance.audioFinishLevel.Play();
+        MusicManager.Instance.StopMusic();
+        SoundManager.Instance.PlaySound(SoundType.Level_Done);
         if (best_moves_count != -1)
         {
             if (moves_count < best_moves_count)
