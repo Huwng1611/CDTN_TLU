@@ -12,6 +12,11 @@ public class GameManager : Singleton<GameManager>
         this.Init();
     }
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     private void Init()
     {
         GameData.Instance.saveGame = new SaveGame();

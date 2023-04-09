@@ -13,7 +13,7 @@ namespace Cros.FuzzlePuzzle
 
         private void Start()
         {
-            CalculateScale();
+            //CalculateScale();
         }
 
         private void CalculateScale()

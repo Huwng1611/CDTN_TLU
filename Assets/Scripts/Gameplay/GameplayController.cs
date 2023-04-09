@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Hungdv.InputController;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -36,10 +37,17 @@ public class GameplayController : MonoBehaviour
     public List<UnitBase> unitList;
     public List<UnitBase> dynamicUnitList;
 
+    [Header("Button Controller")]
+    [SerializeField] ButtonInputHandler _btnMoveLeft;
+    [SerializeField] ButtonInputHandler _btnMoveRight;
+    [SerializeField] ButtonInputHandler _btnMoveUp;
+    [SerializeField] ButtonInputHandler _btnMoveDown;
+
     #region Unity Callback
     private void Start()
     {
         this.Init();
+        AddButtonInputHandlerEvents();
     }
 
     private void Update()
@@ -375,5 +383,29 @@ public class GameplayController : MonoBehaviour
     public void BackToMainMenu()
     {
         GameManager.Instance.BackToMainMenu();
+    }
+
+    private void AddButtonInputHandlerEvents()
+    {
+        if (_btnMoveLeft != null)
+        {
+            _btnMoveLeft.OnPointerDownEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.left); };
+            _btnMoveLeft.OnPointerUpEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.zero); };
+        }
+        if (_btnMoveRight != null)
+        {
+            _btnMoveRight.OnPointerDownEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.right); };
+            _btnMoveRight.OnPointerUpEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.zero); };
+        }
+        if (_btnMoveUp != null)
+        {
+            _btnMoveUp.OnPointerDownEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.up); };
+            _btnMoveUp.OnPointerUpEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.zero); };
+        }
+        if (_btnMoveDown != null)
+        {
+            _btnMoveDown.OnPointerDownEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.down); };
+            _btnMoveDown.OnPointerUpEvent += () => { GameplayController.Instance.PlayerMovement(Vector2.zero); };
+        }
     }
 }

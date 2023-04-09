@@ -120,14 +120,6 @@ public class RecordUnitData
     public EnumDirection enumDirection;
     public int boxID;
 
-    //public RecordUnitData(Vector2 player_tile, Vector2 box_tile, EnumDirection dir, int box_ID)
-    //{
-    //    this.playerTile = player_tile;
-    //    this.boxTile = box_tile;
-    //    this.enumDirection = dir;
-    //    this.boxID = box_ID;
-    //}
-
     public RecordUnitData(Vector2 player_tile, Vector2 box_tile, EnumDirection dir, int box_ID)
     {
         this.playerTile = player_tile;
